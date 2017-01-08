@@ -104,7 +104,7 @@ public class Histogram
    |  but can be of any size.
   \*------------------------------------------------------------------------*/
   {
-    Debug.assert (bin >= 0, "Histogram.Add: bin less than 0.");
+    Debug.myassert(bin >= 0, "Histogram.Add: bin less than 0.");
 
     long lbin = bin;
     bin = bin / binSize;
@@ -137,7 +137,7 @@ public class Histogram
    |  non-negative, but can be of any size.  
   \*------------------------------------------------------------------------*/
   {
-    Debug.assert (bin>=0, "Histogram.Bin: bin less than 0.");
+    Debug.myassert(bin>=0, "Histogram.Bin: bin less than 0.");
 
     bin = bin/binSize;
     if (bin >= hist.length) bin = hist.length -1;
