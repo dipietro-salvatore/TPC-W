@@ -127,7 +127,16 @@ cd /opt/TPC-W/java-tpcw/
 Now we need to populate. So on one webserver only run:
 ```
 ant gendb      # This takes a while to complete
-ant genimage
+ant genimage   # it takes around 2 hours
+```
+Now you need to copy the generated images to the other websevers. I used the scp command on the server that owns the images:
+```
+scp -r /var/lib/tomcat7/webapps/tpcw/Images  <webserver2IP>:~/Images
+```
+and after, on the other webservers move the Images folder into the tpcw tomcat folder:
+```
+sudo mv Images /var/lib/tomcat7/webapps/tpcw/
+sudo chown -R tomcat7:tomcat7 /var/lib/tomcat7/webapps/tpcw/Images     #Change the file owner
 ```
 
 #### Test
@@ -138,9 +147,12 @@ sudo service tomcat7 restart
 and visit http://localhost:8080/tpcw/TPCW_home_interaction 
 if it is not your local machine, change localhost with the IP address of one of your webserver (example for http://13.69.193.129:8080/tpcw/TPCW_home_interaction)  
 
-If you want you can create a direct link to the webpage (http://localhost:8080/tpcw/) creating the index.html file inside /var/lib/tomcat6/webapps/tpcw/ in all your webservers:
+If you want you can create a direct link to the webpage (http://localhost:8080/tpcw/) creating the index.html file inside /var/lib/tomcat6/webapps/tpcw/ in all your webservers. So open the file
 ```
 sudo nano /var/lib/tomcat7/webapps/tpcw/index.html 
+```
+and write this :
+```
 <html>
 <meta http-equiv="refresh" content="0; url=/tpcw/TPCW_home_interaction" />
 </html>
