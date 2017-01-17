@@ -3,6 +3,13 @@ TPC-W benchmark
 
 ## Installation 
 
+### Requirements
+This implementation requires at least two virtual machines: 
+- 1 x MySQL Server
+- n X Webserver (Tomcat7)
+
+All the virtual machines are based on Ubuntu.
+
 ### Mysql Server
 Install MySQL server.
 ```
@@ -126,8 +133,8 @@ cd /opt/TPC-W/java-tpcw/
 #### Populate the website
 Now we need to populate. So on one webserver only run:
 ```
-ant gendb      # This takes a while to complete
-ant genimage   # it takes around 2 hours
+sudo ant gendb      # This takes a while to complete
+sudo ant genimg     # it takes around 2 hours
 ```
 Now you need to copy the generated images to the other websevers. I used the scp command on the server that owns the images:
 ```
