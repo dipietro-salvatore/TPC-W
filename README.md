@@ -47,7 +47,7 @@ bind-address            = 0.0.0.0
 #### Install packages and TPC-W
 ```
 sudo apt update
-sudo apt install tomcat7 default-jre default-jdk ant perl libmysql-java build-essential
+sudo apt install tomcat7 default-jre default-jdk ant perl libmysql-java libservlet3.0-java build-essential
 ```
 Take a copy of TPC-W
 ```
